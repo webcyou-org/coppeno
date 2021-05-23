@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/urfave/cli"
+	"webcyou-org/coppeno/lib/copy"
 )
 
 // These variables are set in build step
@@ -20,6 +21,22 @@ func main() {
 	app.Version = "0.1.0"
 
 	app.Commands = []cli.Command{
+		{
+			Name:    "copy",
+			Aliases: []string{"c"},
+			Usage:   "copy",
+			Flags: []cli.Flag{
+				cli.StringFlag{Name: "copy, c"},
+				cli.StringFlag{Name: "path, p"},
+			},
+			Action:  func(c *cli.Context) error {
+				err := copy.Start("", c.String("path"), c.Args().First())
+				if err != nil {
+					return err
+				}
+				return nil
+			},
+		},
 		{
 			Name:    "generate",
 			Aliases: []string{"g"},
