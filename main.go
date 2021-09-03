@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"webcyou-org/coppeno/lib/save"
 
 	"github.com/urfave/cli"
 	"webcyou-org/coppeno/lib/copy"
@@ -31,6 +32,21 @@ func main() {
 			},
 			Action:  func(c *cli.Context) error {
 				err := copy.Start(c.Args().First())
+				if err != nil {
+					return err
+				}
+				return nil
+			},
+		},
+		{
+			Name:    "save",
+			Aliases: []string{"s"},
+			Usage:   "save",
+			Flags: []cli.Flag{
+				cli.StringFlag{Name: "save, s"},
+			},
+			Action:  func(c *cli.Context) error {
+				err := save.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
 				}
