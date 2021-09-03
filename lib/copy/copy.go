@@ -2,21 +2,20 @@ package copy
 
 import (
 	"fmt"
+	"github.com/markbates/pkger"
+	"io"
 	"os"
 	"path"
-	"io"
-	"github.com/markbates/pkger"
 )
 
-func Start(dirName string, targetPath string, assetsType string) error {
+func Start(targetPath string) error {
 	exePath, _ := os.Getwd()
-	createPath := path.Join(exePath, targetPath)
+	targetFile := path.Join(exePath, targetPath)
 
-	fmt.Println("dirName: ", dirName)
-	fmt.Println("dirName: ", dirName)
-	fmt.Println("createPath: ", createPath)
+	fmt.Println("targetPath: ", targetPath)
+	fmt.Println("targetFile: ", targetFile)
 
-	f, err := pkger.Open(createPath)
+	f, err := pkger.Open(targetFile)
 	if err != nil {
 		return err
 	}

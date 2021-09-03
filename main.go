@@ -30,7 +30,7 @@ func main() {
 				cli.StringFlag{Name: "path, p"},
 			},
 			Action:  func(c *cli.Context) error {
-				err := copy.Start("", c.String("path"), c.Args().First())
+				err := copy.Start(c.Args().First())
 				if err != nil {
 					return err
 				}
