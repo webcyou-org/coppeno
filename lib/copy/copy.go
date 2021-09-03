@@ -14,6 +14,8 @@ func Start(targetPath string) error {
 
 	fmt.Println("targetPath: ", targetPath)
 	fmt.Println("targetFile: ", targetFile)
+	stockPath := path.Join(exePath, "stock")
+	fmt.Println(stockPath)
 
 	f, err := pkger.Open(targetFile)
 	if err != nil {
@@ -27,12 +29,21 @@ func Start(targetPath string) error {
 		return err
 	}
 
+	exe, err := os.Executable()
+	fmt.Println("exe: ", exe)
 	fmt.Println("Name: ", info.Name())
 	fmt.Println("Size: ", info.Size())
 	fmt.Println("Mode: ", info.Mode())
 	fmt.Println("ModTime: ", info.ModTime())
 
-	if _, err := io.Copy(os.Stdout, f); err != nil {
+	distPath := path.Join(stockPath, info.Name())
+	dst, err := os.Create(distPath)
+	if err != nil {
+		panic(err)
+	}
+	defer dst.Close()
+
+	if _, err := io.Copy(dst, f); err != nil {
 		return err
 	}
 	return nil
