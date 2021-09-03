@@ -6,9 +6,9 @@ import (
 	"os"
 )
 
-var coppeno struct {
-	Name string `json: "name"`
-	Url string  `json: "url"`
+type Coppeno struct {
+	Name string `json:"name"`
+	Url string  `json:"url"`
 }
 
 func Start(fileName string, fileGroup string) error {
@@ -18,11 +18,16 @@ func Start(fileName string, fileGroup string) error {
 	}
 	defer f.Close()
 
+	var coppeno []*Coppeno
 	err = json.NewDecoder(f).Decode(&coppeno)
 	if err != nil {
 		return err
 	}
-	fmt.Printf("%+v\n", coppeno)
+
+	for _, v := range coppeno {
+		fmt.Printf("%+v\n", v)
+	}
+	// fmt.Printf("%+v\n", coppeno)
 	fmt.Println(fileName)
 	fmt.Println(fileGroup)
 	return nil
