@@ -70,6 +70,21 @@ func main() {
 			},
 		},
 		{
+			Name:    "update",
+			Aliases: []string{"u"},
+			Usage:   "update",
+			Flags: []cli.Flag{
+				cli.StringFlag{Name: "update, u"},
+			},
+			Action:  func(c *cli.Context) error {
+				err := load.Start(c.Args().First(), c.Args().Get(1))
+				if err != nil {
+					return err
+				}
+				return nil
+			},
+		},
+		{
 			Name:    "list",
 			Usage:   "list",
 			Flags: []cli.Flag{
