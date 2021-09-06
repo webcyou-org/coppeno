@@ -4,9 +4,9 @@ import (
 	"github.com/urfave/cli"
 	"log"
 	"os"
-	"webcyou-org/coppeno/lib/load"
-
 	"webcyou-org/coppeno/lib/copy"
+	"webcyou-org/coppeno/lib/list"
+	"webcyou-org/coppeno/lib/load"
 	"webcyou-org/coppeno/lib/save"
 )
 
@@ -63,6 +63,20 @@ func main() {
 			},
 			Action:  func(c *cli.Context) error {
 				err := load.Start(c.Args().First(), c.Args().Get(1))
+				if err != nil {
+					return err
+				}
+				return nil
+			},
+		},
+		{
+			Name:    "list",
+			Usage:   "list",
+			Flags: []cli.Flag{
+				cli.StringFlag{Name: "list"},
+			},
+			Action:  func(c *cli.Context) error {
+				err := list.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
 				}
