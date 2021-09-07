@@ -8,6 +8,7 @@ import (
 	"webcyou-org/coppeno/lib/list"
 	"webcyou-org/coppeno/lib/load"
 	"webcyou-org/coppeno/lib/save"
+	"webcyou-org/coppeno/lib/update"
 )
 
 // These variables are set in build step
@@ -62,10 +63,11 @@ func main() {
 				cli.StringFlag{Name: "load, l"},
 			},
 			Action:  func(c *cli.Context) error {
-				err := load.Start(c.Args().First(), c.Args().Get(1))
-				if err != nil {
-					return err
-				}
+				load.Start(c.Args().First(), c.Args().Get(1))
+				//err := load.Start(c.Args().First(), c.Args().Get(1))
+				//if err != nil {
+				//	return err
+				//}
 				return nil
 			},
 		},
@@ -77,7 +79,7 @@ func main() {
 				cli.StringFlag{Name: "update, u"},
 			},
 			Action:  func(c *cli.Context) error {
-				err := load.Start(c.Args().First(), c.Args().Get(1))
+				err := update.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
 				}

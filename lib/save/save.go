@@ -4,9 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"webcyou-org/coppeno/lib/load"
 )
 
 func Start(name string, targetPath string) error {
+	coppeno := load.Start("fileName", "fileGroup")
+
+	fmt.Println(coppeno)
 	fmt.Println(name)
 	fmt.Println(targetPath)
 	a := map[string]interface{}{
