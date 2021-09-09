@@ -7,11 +7,6 @@ import (
 	"webcyou-org/coppeno/lib/load"
 )
 
-type Coppeno struct {
-	Name string `json:"name"`
-	Url  string `json:"url"`
-}
-
 func Start(name string, targetPath string) error {
 	fmt.Println("save: Start")
 
@@ -25,7 +20,7 @@ func Start(name string, targetPath string) error {
 		Name: name,
 		Url:  targetPath,
 	}
-	coppenoList := append(coppenoJson, coppeno)
+	coppenoJson = append(coppenoJson, coppeno)
 
 	f, err := os.Create("coppeno.json")
 	if err != nil {
@@ -33,7 +28,7 @@ func Start(name string, targetPath string) error {
 	}
 	defer f.Close()
 
-	err = json.NewEncoder(f).Encode(coppenoList)
+	err = json.NewEncoder(f).Encode(coppenoJson)
 	if err != nil {
 		return err
 	}
