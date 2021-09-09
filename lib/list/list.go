@@ -1,35 +1,21 @@
 package list
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
+	"webcyou-org/coppeno/lib/load"
 )
 
 type Coppeno struct {
 	Name string `json:"name"`
-	Url string  `json:"url"`
+	Url  string `json:"url"`
 }
 
-func Start(fileName string, fileGroup string) error {
-	f, err := os.Open("coppeno.json")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
+func Start() error {
+	coppenoJson := load.Start("fileName", "fileGroup")
 
-	var coppeno []*Coppeno
-	err = json.NewDecoder(f).Decode(&coppeno)
-	if err != nil {
-		return err
+	for _, c := range coppenoJson {
+		str := fmt.Sprintf("name: %s, url: %s", c.Name, c.Url)
+		fmt.Println(str)
 	}
-
-	for _, v := range coppeno {
-		fmt.Printf("%+v\n", v)
-	}
-	// fmt.Printf("%+v\n", coppeno)
-	fmt.Println(fileName)
-	fmt.Println(fileGroup)
 	return nil
 }
-

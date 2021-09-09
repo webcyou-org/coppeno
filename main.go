@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/urfave/cli"
 	"log"
 	"os"
 	"webcyou-org/coppeno/lib/copy"
@@ -9,6 +8,8 @@ import (
 	"webcyou-org/coppeno/lib/load"
 	"webcyou-org/coppeno/lib/save"
 	"webcyou-org/coppeno/lib/update"
+
+	"github.com/urfave/cli"
 )
 
 // These variables are set in build step
@@ -32,7 +33,7 @@ func main() {
 				cli.StringFlag{Name: "copy, c"},
 				cli.StringFlag{Name: "path, p"},
 			},
-			Action:  func(c *cli.Context) error {
+			Action: func(c *cli.Context) error {
 				err := copy.Start(c.Args().First())
 				if err != nil {
 					return err
@@ -47,7 +48,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "save, s"},
 			},
-			Action:  func(c *cli.Context) error {
+			Action: func(c *cli.Context) error {
 				err := save.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
@@ -62,7 +63,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "load, l"},
 			},
-			Action:  func(c *cli.Context) error {
+			Action: func(c *cli.Context) error {
 				load.Start(c.Args().First(), c.Args().Get(1))
 				//err := load.Start(c.Args().First(), c.Args().Get(1))
 				//if err != nil {
@@ -78,7 +79,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "update, u"},
 			},
-			Action:  func(c *cli.Context) error {
+			Action: func(c *cli.Context) error {
 				err := update.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
@@ -87,13 +88,13 @@ func main() {
 			},
 		},
 		{
-			Name:    "list",
-			Usage:   "list",
+			Name:  "list",
+			Usage: "list",
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "list"},
 			},
-			Action:  func(c *cli.Context) error {
-				err := list.Start(c.Args().First(), c.Args().Get(1))
+			Action: func(c *cli.Context) error {
+				err := list.Start()
 				if err != nil {
 					return err
 				}
@@ -107,7 +108,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "path, p"},
 			},
-			Action:  func(c *cli.Context) error {
+			Action: func(c *cli.Context) error {
 				log.Println("Hello, world!")
 				return nil
 			},

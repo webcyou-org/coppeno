@@ -13,7 +13,7 @@ type Coppeno struct {
 }
 
 func Start(fileName string, fileGroup string) []Coppeno {
-	fmt.Println("load: Start")
+	fmt.Println("load file - coppeno.json")
 
 	raw, err := ioutil.ReadFile("coppeno.json")
 	if err != nil {

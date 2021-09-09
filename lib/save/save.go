@@ -11,11 +11,6 @@ func Start(name string, targetPath string) error {
 	fmt.Println("save: Start")
 
 	coppenoJson := load.Start("fileName", "fileGroup")
-	// for _, c := range coppenoJson {
-	// 	// fmt.Sprintf("%s: %s", c.Name, c.Url)
-	// 	fmt.Println(c.Name)
-	// 	fmt.Println(c.Url)
-	// }
 	coppeno := load.Coppeno{
 		Name: name,
 		Url:  targetPath,
