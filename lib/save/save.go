@@ -27,7 +27,7 @@ func Start(name string, targetPath string) error {
 	}
 	coppenoList := append(coppenoJson, coppeno)
 
-	f, err := os.Create("data_output.json")
+	f, err := os.Create("coppeno.json")
 	if err != nil {
 		return err
 	}
