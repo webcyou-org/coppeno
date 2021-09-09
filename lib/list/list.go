@@ -5,11 +5,6 @@ import (
 	"webcyou-org/coppeno/lib/load"
 )
 
-type Coppeno struct {
-	Name string `json:"name"`
-	Url  string `json:"url"`
-}
-
 func Start() error {
 	coppenoJson := load.Start("fileName", "fileGroup")
 
