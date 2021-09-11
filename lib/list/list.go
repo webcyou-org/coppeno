@@ -6,7 +6,7 @@ import (
 )
 
 func Start() error {
-	coppenoJson := load.Start("fileName", "fileGroup")
+	coppenoJson := load.Start()
 
 	for _, c := range coppenoJson {
 		str := fmt.Sprintf("name: %s, url: %s", c.Name, c.Url)

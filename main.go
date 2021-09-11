@@ -49,14 +49,6 @@ func main() {
 				cli.StringFlag{Name: "save, s"},
 			},
 			Action: func(c *cli.Context) error {
-				if c.Args().Get(1) == "" {
-					err := save.File(c.Args().First())
-					if err != nil {
-						return err
-					}
-					return nil
-				}
-
 				err := save.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
@@ -72,11 +64,13 @@ func main() {
 				cli.StringFlag{Name: "load, l"},
 			},
 			Action: func(c *cli.Context) error {
-				load.Start(c.Args().First(), c.Args().Get(1))
-				//err := load.Start(c.Args().First(), c.Args().Get(1))
-				//if err != nil {
-				//	return err
-				//}
+				if c.Args().First() != "" {
+					err := load.File(c.Args().First())
+					if err != nil {
+						return err
+					}
+					return nil
+				}
 				return nil
 			},
 		},

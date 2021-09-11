@@ -3,8 +3,10 @@ package load
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
+	"path"
 )
 
 type Coppeno struct {
@@ -12,7 +14,7 @@ type Coppeno struct {
 	Url  string `json:"url"`
 }
 
-func Start(fileName string, fileGroup string) []Coppeno {
+func Start() []Coppeno {
 	fmt.Println("load file - coppeno.json")
 
 	raw, err := ioutil.ReadFile("coppeno.json")
@@ -25,4 +27,26 @@ func Start(fileName string, fileGroup string) []Coppeno {
 	json.Unmarshal(raw, &coppeno)
 
 	return coppeno
+}
+
+func File(filePath string) error {
+	file, err := os.Open(filePath)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	exePath, _ := os.Getwd()
+	targetFile := path.Join(exePath, "coppeno.json")
+
+	dst, err := os.Create(targetFile)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	if _, err := io.Copy(dst, file); err != nil {
+		return err
+	}
+	return nil
 }
