@@ -49,6 +49,14 @@ func main() {
 				cli.StringFlag{Name: "save, s"},
 			},
 			Action: func(c *cli.Context) error {
+				if c.Args().Get(1) == "" {
+					err := save.File(c.Args().First())
+					if err != nil {
+						return err
+					}
+					return nil
+				}
+
 				err := save.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
