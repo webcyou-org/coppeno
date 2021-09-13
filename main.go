@@ -103,18 +103,6 @@ func main() {
 				return nil
 			},
 		},
-		{
-			Name:    "generate",
-			Aliases: []string{"g"},
-			Usage:   "Hello",
-			Flags: []cli.Flag{
-				cli.StringFlag{Name: "path, p"},
-			},
-			Action: func(c *cli.Context) error {
-				log.Println("Hello, world!")
-				return nil
-			},
-		},
 	}
 
 	err := app.Run(os.Args)
