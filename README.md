@@ -13,7 +13,7 @@
 
 ## Installation
 
-go
+**golang**
 
 ```
 $ GO111MODULE=on go get github.com/webcyou-org/coppeno
@@ -23,25 +23,27 @@ $ GO111MODULE=on go get github.com/webcyou-org/coppeno
 
 **Default Usage**
 
-
-
 ```
-$ coppeno コマンド
+$ coppeno <command>
 ```
 
-コマンド
+#### Commands
+
+| Commands | argument | description    |
+|:----------------|:-----------|:-----------|
+| save            |  |   |
+| load            |  |   |
+| update (fetch)  |  |   |
+| diff            |  |   |
+| list            |  |   |
+| setting         |  |   |
+| cache           |  |   |
+
+To see a full list of commands available for the CLI tools, type:
 
 ```
-save
-load
-update
-diff
-list
-setting
-cache
+$ coppeno help
 ```
-
-
 
 ### coppeno.json （コンフィグファイル）
 
