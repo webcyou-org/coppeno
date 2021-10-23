@@ -9,6 +9,20 @@ Quick project kickstarter Simple File Manager CLI tool.
 ![coppeno-3](https://user-images.githubusercontent.com/1584153/118579050-468e3880-b7c8-11eb-9365-98addbd8a363.jpg)
 
 
+## Install
+
+go
+
+```
+$ GO111MODULE=on go get github.com/webcyou-org/coppeno
+```
+
+## usage
+
+**Default Usage**
+
+
+
 ```
 $ coppeno コマンド
 ```
@@ -57,3 +71,22 @@ coppeno {
 }
 ```
 
+### GOPATH
+
+Make sure your `PATH` includes the `$GOPATH/bin` directory so your commands can
+be easily used:
+```
+export PATH=$PATH:$GOPATH/bin
+```
+
+## Creators
+
+**Daisuke Takayama**
+* [@webcyou](https://twitter.com/webcyou)
+* [@panicdragon](https://twitter.com/panicdragon)
+* <https://github.com/webcyou>
+* <https://github.com/panicdragon>
+* <http://www.webcyou.com/>
+
+## Copyright and license
+MIT
