@@ -1,6 +1,9 @@
-# coppeno
-
-Quick project kickstarter Simple File Manager CLI tool.
+<div align="center">
+  <h1><code>coppeno</code></h1>
+  <p>
+    <strong>Quick project kickstarter Simple File Manager CLI tool.</strong>
+  </p>
+</div>
 
 ![linkedin_banner_image_1](https://user-images.githubusercontent.com/1584153/138566408-3fd46669-c7be-42ce-afcc-eaf52bf6f0ff.png)
 
@@ -9,7 +12,7 @@ Quick project kickstarter Simple File Manager CLI tool.
 ![coppeno-3](https://user-images.githubusercontent.com/1584153/118579050-468e3880-b7c8-11eb-9365-98addbd8a363.jpg)
 
 
-## Install
+## Installation
 
 go
 
@@ -17,7 +20,7 @@ go
 $ GO111MODULE=on go get github.com/webcyou-org/coppeno
 ```
 
-## usage
+## Usage Example
 
 **Default Usage**
 
