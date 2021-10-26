@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/gobuffalo/packr/v2 v2.8.1
 	github.com/karrick/godirwalk v1.16.1 // indirect
+	github.com/manifoldco/promptui v0.8.0 // indirect
 	github.com/markbates/pkger v0.17.1
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect

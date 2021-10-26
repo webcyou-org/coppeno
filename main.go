@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"log"
 	"os"
 	"webcyou-org/coppeno/lib/copy"
@@ -9,6 +10,7 @@ import (
 	"webcyou-org/coppeno/lib/save"
 	"webcyou-org/coppeno/lib/update"
 
+	"github.com/manifoldco/promptui"
 	"github.com/urfave/cli"
 )
 
@@ -49,7 +51,27 @@ func main() {
 				cli.StringFlag{Name: "save, s"},
 			},
 			Action: func(c *cli.Context) error {
-				err := save.Start(c.Args().First(), c.Args().Get(1))
+				validate := func(input string) error {
+					if len(input) > 0 {
+						return nil
+					}
+					return errors.New("Invalid Required input")
+				}
+
+				prompt := promptui.Prompt{
+					Label:    "filename",
+					Validate: validate,
+				}
+				filename, _ := prompt.Run()
+
+				prompt = promptui.Prompt{
+					Label:    "URL",
+					Validate: validate,
+				}
+				url, _ := prompt.Run()
+
+				err := save.Start(filename, url)
+				// err := save.Start(c.Args().First(), c.Args().Get(1))
 				if err != nil {
 					return err
 				}
