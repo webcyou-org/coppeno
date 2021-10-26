@@ -23,7 +23,9 @@ func Start(name string, targetPath string) error {
 	}
 	defer f.Close()
 
-	err = json.NewEncoder(f).Encode(coppenoJson)
+	jsonEncode := json.NewEncoder(f)
+	jsonEncode.SetIndent("", "    ")
+	err = jsonEncode.Encode(coppenoJson)
 	if err != nil {
 		return err
 	}
