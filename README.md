@@ -31,9 +31,9 @@ $ coppeno <command>
 
 | Commands | argument | description    |
 |:----------------|:-----------|:-----------|
-| save            |  |   |
-| load            |  |   |
-| fetch           |  |   |
+| save            | [filename] [URL] |  Save the file name and file path interactively. |
+| load            | [filepath] |  Read the coppeno.json file that was created. |
+| fetch           |  |  Download the file saved in coppeno.json |
 | diff            |  |   |
 | list            |  |   |
 | setting         |  |   |
