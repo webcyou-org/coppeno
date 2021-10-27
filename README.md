@@ -34,10 +34,10 @@ $ coppeno <command>
 | save            | [filename] [URL] |  Save the file name and file path interactively. |
 | load            | [filepath] |  Read the coppeno.json file that was created. |
 | fetch           | None [filename] |  Download the file saved in coppeno.json |
-| diff            |  |   |
-| list            | None |   |
-| setting         | None |   |
-| cache           |  |   |
+| diff            |  |  Check the difference between the destination file and the local file. |
+| list            | None |  Check the list of files saved in coppeno.json. |
+| setting         | None |  Updating the configuration file |
+| cache           |  |  Cache the downloaded files |
 
 To see a full list of commands available for the CLI tools, type:
 
