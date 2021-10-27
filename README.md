@@ -13,6 +13,8 @@
 
 ## Installation
 
+**Homebrew**
+
 **golang**
 
 ```
