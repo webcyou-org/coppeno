@@ -33,7 +33,7 @@ $ coppeno <command>
 |:----------------|:-----------|:-----------|
 | save            |  |   |
 | load            |  |   |
-| update (fetch)  |  |   |
+| fetch           |  |   |
 | diff            |  |   |
 | list            |  |   |
 | setting         |  |   |
