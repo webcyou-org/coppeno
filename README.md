@@ -47,22 +47,22 @@ To see a full list of commands available for the CLI tools, type:
 $ coppeno help
 ```
 
-### coppeno.json （コンフィグファイル）
+### coppeno.json
 
 ```
+[{
+    "name": "File Name",
+    "url": "File URL for download"    
+},
 {
-  # グループ
-  nuxt: {
-      key: 対象URL,
-      key: 対象URL,
-      key: 対象URL
-  },
-  〇〇: {
-      key: 対象URL,
-      key: 対象URL,
-      key: 対象URL
-  }
-}
+    "name": "File Name",
+    "url": "File URL for download"    
+}]
+```
+
+### srtting.json
+
+```
 ```
 
 ### coppeno struct
