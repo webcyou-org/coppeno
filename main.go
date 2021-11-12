@@ -42,6 +42,11 @@ func main() {
 				}
 
 				prompt := promptui.Prompt{
+					Label:    "group",
+				}
+				group, _ := prompt.Run()
+
+				prompt = promptui.Prompt{
 					Label:    "filename",
 					Validate: validate,
 				}
@@ -53,7 +58,7 @@ func main() {
 				}
 				url, _ := prompt.Run()
 
-				err := save.Start(filename, url)
+				err := save.Start(group, filename, url)
 				if err != nil {
 					return err
 				}

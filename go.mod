@@ -1,18 +1,22 @@
 module webcyou-org/coppeno
 
-go 1.16
+go 1.17
 
 require (
-	github.com/gobuffalo/packr/v2 v2.8.1
-	github.com/karrick/godirwalk v1.16.1 // indirect
-	github.com/manifoldco/promptui v0.8.0 // indirect
-	github.com/markbates/pkger v0.17.1
-	github.com/rogpeppe/go-internal v1.8.0 // indirect
-	github.com/sirupsen/logrus v1.8.1 // indirect
+	github.com/bitly/go-simplejson v0.5.0
+	github.com/manifoldco/promptui v0.8.0
 	github.com/urfave/cli v1.22.5
-	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+)
+
+require (
+	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
+	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
+	github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a // indirect
+	github.com/lunixbochs/vtclean v0.0.0-20180621232353-2d01aacdc34a // indirect
+	github.com/mattn/go-colorable v0.0.9 // indirect
+	github.com/mattn/go-isatty v0.0.4 // indirect
+	github.com/russross/blackfriday/v2 v2.0.1 // indirect
+	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	golang.org/x/sys v0.0.0-20210521203332-0cec03c779c1 // indirect
-	golang.org/x/term v0.0.0-20210503060354-a79de5458b56 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

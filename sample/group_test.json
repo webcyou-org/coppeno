@@ -1,0 +1,13 @@
+{
+  "none": [],
+  "dotfiles": [
+    {
+      "name": ".gitconfig",
+      "url": "https://github.com/lewagon/dotfiles/blob/master/gitconfig"
+    },
+    {
+      "name": ".bash_profile",
+      "url": "https://github.com/mathiasbynens/dotfiles/blob/main/.bash_profile"
+    }
+  ]
+}

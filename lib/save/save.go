@@ -7,7 +7,7 @@ import (
 	"webcyou-org/coppeno/lib/load"
 )
 
-func Start(name string, targetPath string) error {
+func Start(group string, name string, targetPath string) error {
 	fmt.Println("save: Start")
 
 	coppenoJson := load.Start()
@@ -15,7 +15,12 @@ func Start(name string, targetPath string) error {
 		Name: name,
 		Url:  targetPath,
 	}
-	coppenoJson = append(coppenoJson, coppeno)
+
+	if len(group) > 0 {
+		coppenoJson.Set(group, append(coppenoJson.Get(group).MustArray(), coppeno))
+	} else {
+		coppenoJson.Set("none", append(coppenoJson.Get("none").MustArray(), coppeno))
+	}
 
 	f, err := os.Create("coppeno.json")
 	if err != nil {
