@@ -50,17 +50,33 @@ $ coppeno help
 ### coppeno.json
 
 ```
-[{
-    "name": "File Name",
-    "url": "File URL for download"    
-},
 {
-    "name": "File Name",
-    "url": "File URL for download"    
-}]
+  // Not grouped.
+  "none": [
+    {
+      "name": "File Name",
+      "url": "File URL for download"    
+    },
+    {
+      "name": "File Name",
+      "url": "File URL for download"    
+    }
+  ],
+  // Arbitrarily grouped.
+  "dotfiles": [
+    {
+      "name": ".gitconfig",
+      "url": "https://github.com/lewagon/dotfiles/blob/master/gitconfig"
+    },
+    {
+      "name": ".bash_profile",
+      "url": "https://github.com/mathiasbynens/dotfiles/blob/main/.bash_profile"
+    }
+  ]
+}
 ```
 
-### srtting.json
+### setting.json
 
 ```
 ```

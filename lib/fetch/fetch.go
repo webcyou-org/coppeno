@@ -1,13 +1,13 @@
 package fetch
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 	"regexp"
 	"strings"
+	"webcyou-org/coppeno/lib/load"
 )
 
 type Coppeno struct {
@@ -16,40 +16,34 @@ type Coppeno struct {
 }
 
 func Start(fileName string, fileGroup string) error {
-	f, err := os.Open("coppeno.json")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
+	coppenoJson := load.Start()
 
-	var coppeno []*Coppeno
-	err = json.NewDecoder(f).Decode(&coppeno)
-	if err != nil {
-		return err
-	}
+	for key, _ := range coppenoJson.MustMap() {
+		for i, _ := range coppenoJson.Get(key).MustArray() {
+			url := coppenoJson.Get(key).GetIndex(i).Get("url").MustString()
+			name := coppenoJson.Get(key).GetIndex(i).Get("name").MustString()
 
-	for _, v := range coppeno {
-		// fmt.Printf("%+v\n", v)
-		fmt.Println(v.Name)
-		fmt.Println(v.Url)
-
-		r := regexp.MustCompile("^https?://github.com")
-		if r.MatchString(v.Url) {
-			downloadUrl := r.ReplaceAllString(v.Url, "https://raw.githubusercontent.com")
-			downloadUrl = strings.Replace(downloadUrl, "/blob", "", 1)
-			if err := DownloadFile(v.Name, downloadUrl); err != nil {
-				panic(err)
+			// github
+			r := regexp.MustCompile("^https?://github.com")
+			if r.MatchString(url) {
+				downloadUrl := r.ReplaceAllString(url, "https://raw.githubusercontent.com")
+				downloadUrl = strings.Replace(downloadUrl, "/blob", "", 1)
+				if err := DownloadFile(name, downloadUrl); err != nil {
+					panic(err)
+				}
+				fmt.Println(downloadUrl)
 			}
-			fmt.Println(downloadUrl)
-		}
 
-		r = regexp.MustCompile("^https?://bitbucket.org")
-		if r.MatchString(v.Url) {
-			downloadUrl := strings.Replace(v.Url, "/src", "/raw", 1)
-			if err := DownloadFile(v.Name, downloadUrl); err != nil {
-				panic(err)
+			// bitbucket
+			// https://bitbucket.org/<username>/<repo-name>/raw/<branch>/<file-name>
+			r = regexp.MustCompile("^https?://bitbucket.org")
+			if r.MatchString(url) {
+				downloadUrl := strings.Replace(url, "/src", "/raw", 1)
+				if err := DownloadFile(name, downloadUrl); err != nil {
+					panic(err)
+				}
+				fmt.Println(downloadUrl)
 			}
-			fmt.Println(downloadUrl)
 		}
 	}
 	return nil

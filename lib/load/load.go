@@ -1,12 +1,13 @@
 package load
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"path"
+
+	"github.com/bitly/go-simplejson"
 )
 
 type Coppeno struct {
@@ -14,19 +15,15 @@ type Coppeno struct {
 	Url  string `json:"url"`
 }
 
-func Start() []Coppeno {
-	fmt.Println("load file - coppeno.json")
-
+func Start() *simplejson.Json {
 	raw, err := ioutil.ReadFile("coppeno.json")
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
 
-	var coppeno []Coppeno
-	json.Unmarshal(raw, &coppeno)
-
-	return coppeno
+	json, _ := simplejson.NewJson(raw)
+	return json
 }
 
 func File(filePath string) error {
