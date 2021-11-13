@@ -47,6 +47,8 @@ To see a full list of commands available for the CLI tools, type:
 $ coppeno help
 ```
 
+### Quick Start
+
 ### coppeno.json
 
 ```
