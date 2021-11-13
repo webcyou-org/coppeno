@@ -53,7 +53,7 @@ func File(filePath string) error {
 	}
 
 	if len(js.MustMap()) > 0 {
-		if js.Get("name") != nil {
+		if len(js.Get("name").MustString()) > 0 {
 			Start("", js.Get("name").MustString(), js.Get("url").MustString())
 		} else {
 			for key, _ := range js.MustMap() {
