@@ -2,11 +2,12 @@ package load
 
 import (
 	"fmt"
-	"github.com/bitly/go-simplejson"
 	"io"
 	"io/ioutil"
 	"os"
 	"path"
+
+	"github.com/bitly/go-simplejson"
 )
 
 type Coppeno struct {
@@ -23,7 +24,7 @@ func Start() *simplejson.Json {
 		os.Exit(1)
 	}
 
-	json, err := simplejson.NewJson(raw)
+	json, _ := simplejson.NewJson(raw)
 	return json
 }
 

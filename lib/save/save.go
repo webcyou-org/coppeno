@@ -3,8 +3,11 @@ package save
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"webcyou-org/coppeno/lib/load"
+
+	"github.com/bitly/go-simplejson"
 )
 
 func Start(group string, name string, targetPath string) error {
@@ -33,6 +36,36 @@ func Start(group string, name string, targetPath string) error {
 	err = jsonEncode.Encode(coppenoJson)
 	if err != nil {
 		return err
+	}
+	return nil
+}
+
+func File(filePath string) error {
+	raw, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
+
+	js, err := simplejson.NewJson(raw)
+	if err != nil {
+		return err
+	}
+
+	if len(js.MustMap()) > 0 {
+		if js.Get("name") != nil {
+			Start("", js.Get("name").MustString(), js.Get("url").MustString())
+		} else {
+			for key, _ := range js.MustMap() {
+				for i, _ := range js.Get(key).MustArray() {
+					Start(key, js.Get(key).GetIndex(i).Get("name").MustString(), js.Get(key).GetIndex(i).Get("url").MustString())
+				}
+			}
+		}
+	} else if len(js.MustArray()) > 0 {
+		for i, _ := range js.MustArray() {
+			Start("", js.GetIndex(i).Get("name").MustString(), js.GetIndex(i).Get("url").MustString())
+		}
 	}
 	return nil
 }

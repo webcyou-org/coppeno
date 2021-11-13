@@ -6,7 +6,6 @@ import (
 	"os"
 	"webcyou-org/coppeno/lib/fetch"
 	"webcyou-org/coppeno/lib/list"
-	"webcyou-org/coppeno/lib/load"
 	"webcyou-org/coppeno/lib/save"
 
 	"github.com/manifoldco/promptui"
@@ -42,7 +41,7 @@ func main() {
 				}
 
 				prompt := promptui.Prompt{
-					Label:    "group",
+					Label: "group",
 				}
 				group, _ := prompt.Run()
 
@@ -74,7 +73,7 @@ func main() {
 			},
 			Action: func(c *cli.Context) error {
 				if c.Args().First() != "" {
-					err := load.File(c.Args().First())
+					err := save.File(c.Args().First())
 					if err != nil {
 						return err
 					}
