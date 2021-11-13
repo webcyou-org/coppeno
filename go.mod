@@ -1,4 +1,4 @@
-module webcyou-org/coppeno
+module github.com/webcyou-org/coppeno
 
 go 1.17
 

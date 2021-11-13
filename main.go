@@ -4,9 +4,10 @@ import (
 	"errors"
 	"log"
 	"os"
-	"webcyou-org/coppeno/lib/fetch"
-	"webcyou-org/coppeno/lib/list"
-	"webcyou-org/coppeno/lib/save"
+
+	"github.com/webcyou-org/coppeno/lib/fetch"
+	"github.com/webcyou-org/coppeno/lib/list"
+	"github.com/webcyou-org/coppeno/lib/save"
 
 	"github.com/manifoldco/promptui"
 	"github.com/urfave/cli"
@@ -22,7 +23,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "coppeno"
 	app.Usage = "Quick project kickstarter Simple File Manager CLI tool."
-	app.Version = "0.2.0"
+	app.Version = "0.2.1"
 
 	app.Commands = []cli.Command{
 		{

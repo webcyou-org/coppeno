@@ -2,7 +2,8 @@ package list
 
 import (
 	"fmt"
-	"webcyou-org/coppeno/lib/load"
+
+	"github.com/webcyou-org/coppeno/lib/load"
 )
 
 func Start() error {

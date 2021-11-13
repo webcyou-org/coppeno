@@ -7,7 +7,8 @@ import (
 	"os"
 	"regexp"
 	"strings"
-	"webcyou-org/coppeno/lib/load"
+
+	"github.com/webcyou-org/coppeno/lib/load"
 )
 
 type Coppeno struct {

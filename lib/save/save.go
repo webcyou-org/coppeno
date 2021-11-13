@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"webcyou-org/coppeno/lib/load"
+
+	"github.com/webcyou-org/coppeno/lib/load"
 
 	"github.com/bitly/go-simplejson"
 )
