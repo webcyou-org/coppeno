@@ -11,8 +11,6 @@ import (
 )
 
 func Start(group string, name string, targetPath string) error {
-	fmt.Println("save: Start")
-
 	coppenoJson := load.Start()
 	coppeno := load.Coppeno{
 		Name: name,

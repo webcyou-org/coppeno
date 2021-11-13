@@ -16,8 +16,6 @@ type Coppeno struct {
 }
 
 func Start() *simplejson.Json {
-	fmt.Println("load file - coppeno.json")
-
 	raw, err := ioutil.ReadFile("coppeno.json")
 	if err != nil {
 		fmt.Println(err.Error())
