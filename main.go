@@ -21,14 +21,14 @@ var (
 func main() {
 	app := cli.NewApp()
 	app.Name = "coppeno"
-	app.Usage = "Quick project kickstarter CLI tool."
+	app.Usage = "Quick project kickstarter Simple File Manager CLI tool."
 	app.Version = "0.2.0"
 
 	app.Commands = []cli.Command{
 		{
 			Name:    "save",
 			Aliases: []string{"s"},
-			Usage:   "save",
+			Usage:   "Save the file name and file path interactively.",
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "save, s"},
 			},
@@ -67,7 +67,7 @@ func main() {
 		{
 			Name:    "load",
 			Aliases: []string{"l"},
-			Usage:   "load",
+			Usage:   "Read the coppeno.json file that was created.",
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "load, l"},
 			},
@@ -85,7 +85,7 @@ func main() {
 		{
 			Name:    "fetch",
 			Aliases: []string{"f"},
-			Usage:   "fetch",
+			Usage:   "Download the file saved in coppeno.json",
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "fetch, f"},
 			},
@@ -99,7 +99,7 @@ func main() {
 		},
 		{
 			Name:  "list",
-			Usage: "list",
+			Usage: "Check the list of files saved in coppeno.json.",
 			Flags: []cli.Flag{
 				cli.StringFlag{Name: "list"},
 			},

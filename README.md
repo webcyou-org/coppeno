@@ -46,6 +46,27 @@ To see a full list of commands available for the CLI tools, type:
 ```
 $ coppeno help
 ```
+```
+NAME:
+   coppeno - Quick project kickstarter Simple File Manager CLI tool.
+
+USAGE:
+   main [global options] command [command options] [arguments...]
+
+VERSION:
+   0.2.0
+
+COMMANDS:
+   save, s   Save the file name and file path interactively.
+   load, l   Read the coppeno.json file that was created.
+   fetch, f  Download the file saved in coppeno.json
+   list      Check the list of files saved in coppeno.json.
+   help, h   Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+```
 
 ### Quick Start
 
