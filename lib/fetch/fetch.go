@@ -43,6 +43,8 @@ func Start(fileName string, fileGroup string) error {
 			fmt.Println(downloadUrl)
 		}
 
+		// bitbucket
+		// https://bitbucket.org/<username>/<repo-name>/raw/<branch>/<file-name>
 		r = regexp.MustCompile("^https?://bitbucket.org")
 		if r.MatchString(v.Url) {
 			downloadUrl := strings.Replace(v.Url, "/src", "/raw", 1)
