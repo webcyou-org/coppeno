@@ -6,14 +6,14 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/webcyou-org/coppeno/lib/load"
-
 	"github.com/bitly/go-simplejson"
+	"github.com/webcyou-org/coppeno/coppeno"
+	"github.com/webcyou-org/coppeno/lib/load"
 )
 
 func Start(group string, name string, targetPath string) error {
 	coppenoJson := load.Start()
-	coppeno := load.Coppeno{
+	coppeno := coppeno.Coppeno{
 		Name: name,
 		Url:  targetPath,
 	}
