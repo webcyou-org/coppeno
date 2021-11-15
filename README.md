@@ -36,6 +36,7 @@ $ coppeno <command>
 
 | Commands | argument | description    |
 |:----------------|:-----------|:-----------|
+| init            | None |  Initialize coppeno.json. |
 | save            | [filename] [URL] |  Save the file name and file path interactively. |
 | load            | [filepath] |  Read the coppeno.json file that was created. |
 | fetch           | None or [filename] |  Download the file saved in coppeno.json |
@@ -49,6 +50,7 @@ To see a full list of commands available for the CLI tools, type:
 ```
 $ coppeno help
 ```
+
 ```
 NAME:
    coppeno - Quick project kickstarter Simple File Manager CLI tool.
