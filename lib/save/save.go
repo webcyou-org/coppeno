@@ -9,6 +9,7 @@ import (
 	"github.com/bitly/go-simplejson"
 	"github.com/webcyou-org/coppeno/coppeno"
 	"github.com/webcyou-org/coppeno/lib/load"
+	"github.com/webcyou-org/coppeno/utils"
 )
 
 func Start(group string, name string, targetPath string) error {
@@ -24,7 +25,7 @@ func Start(group string, name string, targetPath string) error {
 		coppenoJson.Set("none", append(coppenoJson.Get("none").MustArray(), coppeno))
 	}
 
-	f, err := os.Create("coppeno.json")
+	f, err := os.Create(utils.CoppenoJsonPath())
 	if err != nil {
 		return err
 	}
