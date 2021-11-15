@@ -15,10 +15,13 @@
 
 **Homebrew**
 
+```
+```
+
 **golang**
 
 ```
-$ GO111MODULE=on go get github.com/webcyou-org/coppeno
+GO111MODULE=on go get github.com/webcyou-org/coppeno
 ```
 
 ## Usage Example
@@ -54,9 +57,10 @@ USAGE:
    main [global options] command [command options] [arguments...]
 
 VERSION:
-   0.2.0
+   0.4.0
 
 COMMANDS:
+   init      Initialize coppeno.json.
    save, s   Save the file name and file path interactively.
    load, l   Read the coppeno.json file that was created.
    fetch, f  Download the file saved in coppeno.json
@@ -69,6 +73,10 @@ GLOBAL OPTIONS:
 ```
 
 ### Quick Start
+
+## config files
+
+ Create a file that conforms to the [XDG Base Directory specification](https://specifications.freedesktop.org/basedir-spec/latest/).
 
 ### coppeno.json
 
@@ -99,7 +107,7 @@ GLOBAL OPTIONS:
 }
 ```
 
-### setting.json
+### config.json
 
 ```
 ```
