@@ -28,6 +28,18 @@ func Start(fileName string, fileGroup string) error {
 					panic(err)
 				}
 				fmt.Println(downloadUrl)
+				continue
+			}
+
+			// gitlab
+			r = regexp.MustCompile("^https?://gitlab")
+			if r.MatchString(url) {
+				downloadUrl := strings.Replace(url, "/blob", "/raw", 1)
+				if err := DownloadFile(name, downloadUrl); err != nil {
+					panic(err)
+				}
+				fmt.Println(downloadUrl)
+				continue
 			}
 
 			// bitbucket
@@ -39,7 +51,14 @@ func Start(fileName string, fileGroup string) error {
 					panic(err)
 				}
 				fmt.Println(downloadUrl)
+				continue
 			}
+
+			// Other Hosting
+			if err := DownloadFile(name, url); err != nil {
+				panic(err)
+			}
+			fmt.Println(url)
 		}
 	}
 	return nil
