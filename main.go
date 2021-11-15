@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/webcyou-org/coppeno/lib/fetch"
+	initialization "github.com/webcyou-org/coppeno/lib/init"
 	"github.com/webcyou-org/coppeno/lib/list"
 	"github.com/webcyou-org/coppeno/lib/save"
 
@@ -23,9 +24,23 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "coppeno"
 	app.Usage = "Quick project kickstarter Simple File Manager CLI tool."
-	app.Version = "0.3.0"
+	app.Version = "0.4.0"
 
 	app.Commands = []cli.Command{
+		{
+			Name:  "init",
+			Usage: "Initialize coppeno.json.",
+			Flags: []cli.Flag{
+				cli.StringFlag{Name: "init"},
+			},
+			Action: func(c *cli.Context) error {
+				err := initialization.Start()
+				if err != nil {
+					return err
+				}
+				return nil
+			},
+		},
 		{
 			Name:    "save",
 			Aliases: []string{"s"},
