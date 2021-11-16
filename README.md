@@ -59,7 +59,7 @@ USAGE:
    main [global options] command [command options] [arguments...]
 
 VERSION:
-   0.4.0
+   0.5.1
 
 COMMANDS:
    init      Initialize coppeno.json.
