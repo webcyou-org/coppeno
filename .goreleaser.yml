@@ -26,3 +26,13 @@ archives:
         format: zip
 release:
   prerelease: auto
+brews:
+- tap:
+    owner: panicdragon
+    name: homebrew-coppeno
+    token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+  folder: Formula
+  homepage: https://github.com/webcyou-org/coppeno
+  description: coppeno
+  test: |
+    system "#{bin}/coppeno --version"
