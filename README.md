@@ -21,6 +21,12 @@
 **golang**
 
 ```
+go install github.com/webcyou-org/coppeno@v0.5.1
+```
+
+or
+
+```
 GO111MODULE=on go get github.com/webcyou-org/coppeno
 ```
 
