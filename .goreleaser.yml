@@ -28,7 +28,7 @@ release:
   prerelease: auto
 brews:
 - tap:
-    owner: panicdragon
+    owner: webcyou-org
     name: homebrew-coppeno
     token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
   folder: Formula
