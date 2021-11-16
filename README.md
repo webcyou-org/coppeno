@@ -23,7 +23,7 @@ $ brew install coppeno
 **golang**
 
 ```
-go install github.com/webcyou-org/coppeno@v0.5.1
+go install github.com/webcyou-org/coppeno@latest
 ```
 
 or

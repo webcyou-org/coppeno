@@ -24,7 +24,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "coppeno"
 	app.Usage = "Quick project kickstarter Simple File Manager CLI tool."
-	app.Version = "0.5.2"
+	app.Version = "0.5.5"
 
 	app.Commands = []cli.Command{
 		{
