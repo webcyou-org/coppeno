@@ -5,10 +5,9 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"regexp"
-	"strings"
 
 	"github.com/webcyou-org/coppeno/lib/load"
+	"github.com/webcyou-org/coppeno/utils"
 )
 
 func Start(fileName string, fileGroup string) error {
@@ -19,46 +18,11 @@ func Start(fileName string, fileGroup string) error {
 			url := coppenoJson.Get(key).GetIndex(i).Get("url").MustString()
 			name := coppenoJson.Get(key).GetIndex(i).Get("name").MustString()
 
-			// github
-			r := regexp.MustCompile("^https?://github.com")
-			if r.MatchString(url) {
-				downloadUrl := r.ReplaceAllString(url, "https://raw.githubusercontent.com")
-				downloadUrl = strings.Replace(downloadUrl, "/blob", "", 1)
-				if err := DownloadFile(name, downloadUrl); err != nil {
-					panic(err)
-				}
-				fmt.Println(downloadUrl)
-				continue
-			}
-
-			// gitlab
-			r = regexp.MustCompile("^https?://gitlab")
-			if r.MatchString(url) {
-				downloadUrl := strings.Replace(url, "/blob", "/raw", 1)
-				if err := DownloadFile(name, downloadUrl); err != nil {
-					panic(err)
-				}
-				fmt.Println(downloadUrl)
-				continue
-			}
-
-			// bitbucket
-			// https://bitbucket.org/<username>/<repo-name>/raw/<branch>/<file-name>
-			r = regexp.MustCompile("^https?://bitbucket.org")
-			if r.MatchString(url) {
-				downloadUrl := strings.Replace(url, "/src", "/raw", 1)
-				if err := DownloadFile(name, downloadUrl); err != nil {
-					panic(err)
-				}
-				fmt.Println(downloadUrl)
-				continue
-			}
-
-			// Other Hosting
-			if err := DownloadFile(name, url); err != nil {
+			downloadUrl := utils.GetDownloadUrl(url)
+			if err := DownloadFile(name, downloadUrl); err != nil {
 				panic(err)
 			}
-			fmt.Println(url)
+			fmt.Println(downloadUrl)
 		}
 	}
 	return nil
