@@ -16,6 +16,8 @@
 **Homebrew**
 
 ```
+$ brew tap webcyou-org/coppeno
+$ brew install coppeno
 ```
 
 **golang**
