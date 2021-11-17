@@ -11,6 +11,14 @@ import (
 )
 
 func Start(fileName string, fileGroup string) error {
+	fmt.Println(fileName)
+	fmt.Println(fileGroup)
+	All()
+
+	return nil
+}
+
+func All() error {
 	coppenoJson := load.Start()
 
 	for key, _ := range coppenoJson.MustMap() {

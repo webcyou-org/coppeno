@@ -106,6 +106,11 @@ func main() {
 				cli.StringFlag{Name: "fetch, f"},
 			},
 			Action: func(c *cli.Context) error {
+				if c.Args().First() != "" {
+					fetch.Start(c.Args().First(), c.Args().Get(1))
+					return nil
+				}
+
 				// TODO: add Type group, single
 				prompt := promptui.Select{
 					Label: "Select Fetch Type",
@@ -117,7 +122,7 @@ func main() {
 				}
 
 				if result == "All" {
-					err = fetch.Start(c.Args().First(), c.Args().Get(1))
+					err = fetch.All()
 					if err != nil {
 						return err
 					}
