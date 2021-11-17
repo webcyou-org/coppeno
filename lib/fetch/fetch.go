@@ -36,6 +36,42 @@ func All() error {
 	return nil
 }
 
+func Group(fileGroup string) error {
+	coppenoJson := load.Start()
+
+	for i, _ := range coppenoJson.Get(fileGroup).MustArray() {
+		url := coppenoJson.Get(fileGroup).GetIndex(i).Get("url").MustString()
+		name := coppenoJson.Get(fileGroup).GetIndex(i).Get("name").MustString()
+
+		downloadUrl := utils.GetDownloadUrl(url)
+		if err := DownloadFile(name, downloadUrl); err != nil {
+			panic(err)
+		}
+		fmt.Println(downloadUrl)
+	}
+	return nil
+}
+
+func Single(fileName string) error {
+	coppenoJson := load.Start()
+
+	for key, _ := range coppenoJson.MustMap() {
+		for i, _ := range coppenoJson.Get(key).MustArray() {
+			if fileName == coppenoJson.Get(key).GetIndex(i).Get("name").MustString() {
+				url := coppenoJson.Get(key).GetIndex(i).Get("url").MustString()
+				name := coppenoJson.Get(key).GetIndex(i).Get("name").MustString()
+
+				downloadUrl := utils.GetDownloadUrl(url)
+				if err := DownloadFile(name, downloadUrl); err != nil {
+					panic(err)
+				}
+				fmt.Println(downloadUrl)
+			}
+		}
+	}
+	return nil
+}
+
 func DownloadFile(filepath string, url string) error {
 	resp, err := http.Get(url)
 	if err != nil {

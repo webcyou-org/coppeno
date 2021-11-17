@@ -24,7 +24,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "coppeno"
 	app.Usage = "Quick project kickstarter Simple File Manager CLI tool."
-	app.Version = "0.5.6"
+	app.Version = "0.6.0"
 
 	app.Commands = []cli.Command{
 		{
@@ -111,10 +111,9 @@ func main() {
 					return nil
 				}
 
-				// TODO: add Type group, single
 				prompt := promptui.Select{
 					Label: "Select Fetch Type",
-					Items: []string{"All"},
+					Items: []string{"All", "Group", "Single"},
 				}
 				_, result, err := prompt.Run()
 				if err != nil {
@@ -123,6 +122,36 @@ func main() {
 
 				if result == "All" {
 					err = fetch.All()
+					if err != nil {
+						return err
+					}
+				}
+
+				if result == "Group" {
+					prompt := promptui.Select{
+						Label: "Select Group",
+						Items: list.GetGroupList(),
+					}
+					_, result, err := prompt.Run()
+					if err != nil {
+						return err
+					}
+					err = fetch.Group(result)
+					if err != nil {
+						return err
+					}
+				}
+
+				if result == "Single" {
+					prompt := promptui.Select{
+						Label: "Select File Name",
+						Items: list.GetNameList(),
+					}
+					_, result, err := prompt.Run()
+					if err != nil {
+						return err
+					}
+					err = fetch.Single(result)
 					if err != nil {
 						return err
 					}

@@ -21,3 +21,25 @@ func Start() error {
 	}
 	return nil
 }
+
+func GetGroupList() []string {
+	coppenoJson := load.Start()
+	groupList := []string{}
+
+	for key, _ := range coppenoJson.MustMap() {
+		groupList = append(groupList, key)
+	}
+	return groupList
+}
+
+func GetNameList() []string {
+	coppenoJson := load.Start()
+	nameList := []string{}
+
+	for key, _ := range coppenoJson.MustMap() {
+		for i, _ := range coppenoJson.Get(key).MustArray() {
+			nameList = append(nameList, coppenoJson.Get(key).GetIndex(i).Get("name").MustString())
+		}
+	}
+	return nameList
+}
