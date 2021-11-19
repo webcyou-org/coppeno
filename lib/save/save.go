@@ -84,17 +84,17 @@ func SaveHostingFile(url string) error {
 func SaveJson(js *simplejson.Json) error {
 	if len(js.MustMap()) > 0 {
 		if len(js.Get("name").MustString()) > 0 {
-			return Start("", js.Get("name").MustString(), js.Get("url").MustString())
+			Start("", js.Get("name").MustString(), js.Get("url").MustString())
 		} else {
 			for key, _ := range js.MustMap() {
 				for i, _ := range js.Get(key).MustArray() {
-					return Start(key, js.Get(key).GetIndex(i).Get("name").MustString(), js.Get(key).GetIndex(i).Get("url").MustString())
+					Start(key, js.Get(key).GetIndex(i).Get("name").MustString(), js.Get(key).GetIndex(i).Get("url").MustString())
 				}
 			}
 		}
 	} else if len(js.MustArray()) > 0 {
 		for i, _ := range js.MustArray() {
-			return Start("", js.GetIndex(i).Get("name").MustString(), js.GetIndex(i).Get("url").MustString())
+			Start("", js.GetIndex(i).Get("name").MustString(), js.GetIndex(i).Get("url").MustString())
 		}
 	}
 	return nil
