@@ -84,6 +84,35 @@ GLOBAL OPTIONS:
 
 ### Quick Start
 
+#### dotfiles
+
+**step1**
+
+```
+coppeno load https://github.com/webcyou-org/coppeno-json/blob/master/dotfiles.json
+```
+
+**step2**
+
+```
+coppeno fetch
+```
+
+
+#### cats
+
+**step1**
+
+```
+coppeno load https://github.com/webcyou-org/coppeno-json/blob/master/cats.json
+```
+
+**step2**
+
+```
+coppeno fetch
+```
+
 ## config files
 
  Create a file that conforms to the [XDG Base Directory specification](https://specifications.freedesktop.org/basedir-spec/latest/).
@@ -125,12 +154,9 @@ GLOBAL OPTIONS:
 ### coppeno struct
 
 ```
-coppeno {
-  filename,
-  ext,
-  domain,
-  path,
-  filesize
+type Coppeno struct {
+	Name string `json:"name"`
+	Url  string `json:"url"`
 }
 ```
 
