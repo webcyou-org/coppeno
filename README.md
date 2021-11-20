@@ -82,9 +82,9 @@ GLOBAL OPTIONS:
    --version, -v  print the version
 ```
 
-### Quick Start
+## Quick Start
 
-#### dotfiles
+### dotfiles example
 
 This is an example of downloading a dotfile.
 
@@ -108,7 +108,7 @@ Selecting "All" will download all the files you have set.
 
 ![dotfiles3](https://user-images.githubusercontent.com/1584153/142711112-98de9c16-2d70-4a9b-8d91-66b615e1c4cc.png)
 
-#### cats
+### cats example
 
 Here's an example of a cute cat.
 
@@ -136,6 +136,38 @@ Oh. This is kawaii.
 
 ![cat_all](https://user-images.githubusercontent.com/1584153/142711670-ed12cda0-5a62-41c4-ad82-79183e53cae8.png)
 
+
+You can also load coppeno.json as a local file.
+
+```
+coppeno load ./sample/example.json
+```
+
+### Set any file
+
+It is possible to register individual download files.
+
+**step1**
+
+```
+coppeno save
+```
+
+Set the group name, file name, and download URL to be managed.The group name is optional.
+
+![save1](https://user-images.githubusercontent.com/1584153/142712397-7743b36f-b2c3-4920-925f-ae49d80caaba.png)
+
+![save2](https://user-images.githubusercontent.com/1584153/142712401-2def731c-efd5-4e9a-abef-0be6d38bd419.png)
+
+**step2**
+
+```
+coppeno fetch
+```
+
+Download the files registered with `coppeno fetch`.
+
+![save3](https://user-images.githubusercontent.com/1584153/142712396-c1a96cbb-f2bd-4fba-a06a-864474eaea58.png)
 
 ## config files
 
@@ -173,6 +205,7 @@ Oh. This is kawaii.
 ### config.json
 
 ```
+coming soon.
 ```
 
 ### coppeno struct
